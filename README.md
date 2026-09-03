@@ -1,6 +1,10 @@
 # WorkspaceStudio × AppSheet による名刺管理システム
 本プロジェクトは、Googleから提供されている `Workspace Studio` と `AppSheet` を用いた名刺管理システムを構築する手順書である。これを用いることで、Workspaceに閉じた世界での構築が可能であり、（Workspaceアカウントにおいては）エンタープライズセキュリティで保護された名刺管理システムが爆誕する。
 
+> [!WARNING]  
+> GitHubの仕様上、各種リンクは同じタブで開かれます。現在のページを残したままリンク先を閲覧したい場合は、**`Ctrl` キー（Macの場合は `Command` キー）を押しながらクリック**するか、マウスのホイールボタンでクリックしてください。
+
+
 ## 利用するには
 1. Workspace Studioが利用できる状態であること
 2. AppSheetが利用できる状態であること
@@ -211,3 +215,7 @@
       <img width="1440" height="810" alt="Image" src="https://github.com/user-attachments/assets/90a55898-5467-4f64-b49a-56380017986d" />
    3. トップ画面に遷移するが正式にデプロイが完了するまで少々時間を要する。その後、再度デプロイチェック画面に遷移した際に以下の画面が表示されればデプロイが完了となり、PCやモバイルから利用ができる状態となる。
       <img width="1440" height="810" alt="Image" src="https://github.com/user-attachments/assets/070bb48a-ce53-4c24-87c7-3835e888cc69" />
+
+## 実演
+以下Youtubeにて、実演を公開しているため、参考とすること。
+[こーすけ先生のGoogle塾 --]()
