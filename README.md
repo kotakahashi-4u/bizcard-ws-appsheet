@@ -11,6 +11,10 @@
 3. スマホにGoogleドライブアプリがインストールされていること（任意）  
    `※本システムにおいては、スマホのGoogleドライブアプリを用いたスキャンを前提としているが、別途スキャンアプリを用いている場合にはそれでも可`
 
+## 実演
+以下Youtubeにて、実演を公開しているため、参考とすること。  
+[こーすけ先生のGoogle塾 --]()
+
 ## 準備
 1. 以下リンクよりスプレッドシートのコピーを自身のドライブに保存する。  
    [スプレッドシートリンク](https://docs.google.com/spreadsheets/d/1rW5DPezaiUV1LRnrAcPQRzzHS_4dMAg_oRHLxMQW-qs/edit?usp=drive_link)  
@@ -23,14 +27,14 @@
 3. 名刺データの取り込み済みフォルダを作成する。本フォルダはすでに処理済みの名刺データを格納する領域となる。なお、取り込み済みフォルダについては、ドライブの共有設定において「リンクを知っている全員」が閲覧可能状態にする必要がある。これは、AppSheetから直接的に名刺画像を呼び出して描画するために必要な設定となる。
 
 ## 実装
-### Workspace Studio
+### 1. Workspace Studio
 1. Workspace Studioにアクセスする。[Workspace Studio](https://studio.workspace.google.com/)
 2. 左側メニューの「フローを新規作成する」を押下し、ワークフロー作成画面に遷移する。  
    <img width="1440" height="810" alt="Image" src="https://github.com/user-attachments/assets/17203cca-6a95-4c02-ae83-4316c051734a" />
 3. 以下の手順書に従って、WorkspaceStudio上にフローを作成する。  
    [WorkspaceStudio構築補助手順書](https://docs.google.com/document/d/1qCFVFs0elrgNmBaoJsovz6sFZ2uJAwIkz3yscGqEdRg/edit?usp=sharing)
 
-### スプレッドシート（GAS）
+### 2. スプレッドシート（GAS）
 1. `準備の 1` で作成したスプレッドシートを開く
 2. メニューより [拡張機能] > [Apps Script] を押下する。  
    <img width="1440" height="810" alt="Image" src="https://github.com/user-attachments/assets/02c88d1a-fca4-46f1-aab3-12466e0597f9" />
@@ -46,9 +50,18 @@
 > 
 
 4. 左側メニュー[エディタ]に戻り、`fillMissingIDs` を一度テスト実行する。これを行うことで本プログラムの承認権限を付与するダイアログが表示されるため、画面に従って承認を行う。  
-   <img width="1440" height="810" alt="Image" src="https://github.com/user-attachments/assets/9b995ff9-4a2a-42c0-a6fd-8325846374f4" />
+  <img width="1440" height="810" alt="Image" src="https://github.com/user-attachments/assets/9b995ff9-4a2a-42c0-a6fd-8325846374f4" />
+5. 左側メニュー[トリガー]を押下し、以下のトリガーをそれぞれ作成する。  
+  <img width="1440" height="810" alt="Image" src="https://github.com/user-attachments/assets/8058a699-7f2c-4f54-aa59-0688c80f67f2" />
 
-### AppSheet
+| 実行する関数 | 実行するデプロイ | イベントのソース | 詳細 | 説明 | 
+|:---|:---:|:---|:---|:---|
+| archiveProcessedBusinessCards | Head | 時間主導型 | 日付ベースのタイマー: 午前0時〜1時 | スプシに取込済みの名刺データをアーカイブフォルダに移動する |
+| fillMissingIDs | Head | スプレッドシートから | 変更時 | WorkspaceStudioからスプシにデータが取り込まれた際に一意のIDを付与する |
+| fillMissingIDs | Head | 時間主導型 | 日付ベースのタイマー: 午前1時〜2時 | スプシの変更トリガーがたまにスカるときがあるため、予備トリガー |
+
+
+### 3. AppSheet
 1. `準備の 1` で作成したスプレッドシートを開く
 2. メニューより [拡張機能] > [AppSheet] > [アプリを作成] を押下する。  
    <img width="1440" height="810" alt="Image" src="https://github.com/user-attachments/assets/a3cffca9-af44-4edc-947b-cd97620d82c9" />
@@ -215,7 +228,3 @@
       <img width="1440" height="810" alt="Image" src="https://github.com/user-attachments/assets/90a55898-5467-4f64-b49a-56380017986d" />
    3. トップ画面に遷移するが正式にデプロイが完了するまで少々時間を要する。その後、再度デプロイチェック画面に遷移した際に以下の画面が表示されればデプロイが完了となり、PCやモバイルから利用ができる状態となる。
       <img width="1440" height="810" alt="Image" src="https://github.com/user-attachments/assets/070bb48a-ce53-4c24-87c7-3835e888cc69" />
-
-## 実演
-以下Youtubeにて、実演を公開しているため、参考とすること。
-[こーすけ先生のGoogle塾 --]()
